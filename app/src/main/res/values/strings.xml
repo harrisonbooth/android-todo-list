@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">trevies_todo_list_app</string>
+    <string name="app_name">Trevies To-Do</string>
+    <string name="main_screen_name">Trevies To-Do</string>
+    <string name="action_new_task_title">New Task</string>
 </resources>

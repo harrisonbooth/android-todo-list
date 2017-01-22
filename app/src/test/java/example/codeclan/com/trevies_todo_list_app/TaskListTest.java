@@ -48,7 +48,7 @@ public class TaskListTest {
 
     @Test
     public void canGetTasks(){
-        ArrayList<Listable> gottenTasks = new ArrayList<Listable>();
+        ArrayList<Listable> gottenTasks;
         Task gottenTask;
         String gottenTaskHeadline;
 

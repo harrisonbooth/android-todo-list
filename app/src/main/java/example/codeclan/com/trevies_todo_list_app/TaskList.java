@@ -1,5 +1,7 @@
 package example.codeclan.com.trevies_todo_list_app;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 
 public class TaskList {
 
-    ArrayList<Listable> tasks;
+    private ArrayList<Listable> tasks;
 
     public TaskList(){
         tasks = new ArrayList<Listable>();
@@ -39,4 +41,9 @@ public class TaskList {
     public ArrayList<Listable> getTasks() {
         return tasks;
     }
+
+    public void setup(){
+        tasks.add(new Task("Headline", "Description"));
+    }
+
 }

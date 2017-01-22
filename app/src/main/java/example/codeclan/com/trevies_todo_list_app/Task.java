@@ -6,9 +6,9 @@ package example.codeclan.com.trevies_todo_list_app;
 
 public class Task implements Listable {
 
-    String headline;
-    String description;
-    boolean complete;
+    private String headline;
+    private String description;
+    private boolean complete;
 
     public Task(String headline, String description){
         this.headline = headline;

@@ -6,6 +6,8 @@
     <ListView android:id="@+id/activity_tasklist"
         android:divider="@color/colorDivider"
         android:dividerHeight="1dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content">
     </ListView>

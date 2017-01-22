@@ -53,7 +53,7 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
             }
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskHeadlineList);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
         taskListView.setAdapter(adapter);
 
         taskListView.setOnItemClickListener(this);

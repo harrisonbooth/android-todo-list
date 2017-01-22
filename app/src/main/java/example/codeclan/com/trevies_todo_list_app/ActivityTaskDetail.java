@@ -69,6 +69,14 @@ public class ActivityTaskDetail extends AppCompatActivity {
 
             Task task = taskArrayList.get(taskIndex);
             task.toggleComplete();
+            boolean complete = task.getComplete();
+
+            if(complete){
+                completeTextView.setText("Complete");
+            } else {
+                completeTextView.setText("Incomplete");
+            }
+
             SavedTaskListPreferences.setStoredTaskList(this, taskList);
         }
         return super.onOptionsItemSelected(item);

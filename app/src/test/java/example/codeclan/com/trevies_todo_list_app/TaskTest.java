@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  */
 public class TaskTest {
 
-    Listable task;
+    Task task;
 
     @Before
     public void before(){

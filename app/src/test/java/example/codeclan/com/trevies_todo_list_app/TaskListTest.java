@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 public class TaskListTest {
 
     TaskList taskList;
-    Listable task1;
+    Task task1;
 
     @Before
     public void before(){
@@ -48,7 +48,7 @@ public class TaskListTest {
 
     @Test
     public void canGetTasks(){
-        ArrayList<Listable> gottenTasks;
+        ArrayList<Task> gottenTasks;
         Task gottenTask;
         String gottenTaskHeadline;
 

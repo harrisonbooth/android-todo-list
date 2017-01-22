@@ -10,27 +10,27 @@ import java.util.ArrayList;
 
 public class TaskList {
 
-    private ArrayList<Listable> tasks;
+    private ArrayList<Task> tasks;
 
     public TaskList(){
-        tasks = new ArrayList<Listable>();
+        tasks = new ArrayList<Task>();
     }
 
     public int taskCount(){
         return tasks.size();
     }
 
-    public void addTask(Listable task) {
+    public void addTask(Task task) {
         tasks.add(task);
     }
 
-    public void removeTask(Listable task) {
+    public void removeTask(Task task) {
         tasks.remove(task);
     }
 
     public void removeTaskByHeadline(String headline) {
-        ArrayList<Listable> tasksToRemove = new ArrayList<Listable>();
-        for(Listable task : tasks){
+        ArrayList<Task> tasksToRemove = new ArrayList<Task>();
+        for(Task task : tasks){
             if(task.getHeadline() == headline){
                 tasksToRemove.add(task);
             }
@@ -38,7 +38,7 @@ public class TaskList {
         tasks.removeAll(tasksToRemove);
     }
 
-    public ArrayList<Listable> getTasks() {
+    public ArrayList<Task> getTasks() {
         return tasks;
     }
 

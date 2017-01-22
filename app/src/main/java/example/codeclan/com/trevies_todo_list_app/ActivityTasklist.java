@@ -37,14 +37,15 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         } else {
             taskList = new TaskList();
             taskList.setup();
+            SavedTaskListPreferences.setStoredTaskList(this, taskList);
         }
 
 
-        ArrayList<Listable> taskArrayList = taskList.getTasks();
+        ArrayList<Task> taskArrayList = taskList.getTasks();
         String[] taskHeadlineList = new String[taskArrayList.size()];
 
         for(int i = 0; i < taskArrayList.size(); i++){
-            Listable task = taskArrayList.get(i);
+            Task task = taskArrayList.get(i);
             taskHeadlineList[i] = task.getHeadline();
         }
 
@@ -57,16 +58,11 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         TaskList taskList;
+        taskList = SavedTaskListPreferences.getStoredTaskList(this);
 
-        if(SavedTaskListPreferences.getStoredTaskList(this) != null) {
-            taskList = SavedTaskListPreferences.getStoredTaskList(this);
-        } else {
-            taskList = new TaskList();
-            taskList.setup();
-        }
 
-        ArrayList<Listable> taskArrayList = taskList.getTasks();
-        Listable task = taskArrayList.get(position);
+        ArrayList<Task> taskArrayList = taskList.getTasks();
+        Task task = taskArrayList.get(position);
 
         String headline = task.getHeadline();
         String description = task.getDescription();
@@ -78,6 +74,7 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         Intent intent = new Intent();
         intent.setClass(this, ActivityTaskDetail.class);
 
+        intent.putExtra("taskIndex", position);
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);
         intent.putExtra("complete", complete);

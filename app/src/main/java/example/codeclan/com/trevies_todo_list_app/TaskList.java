@@ -43,7 +43,7 @@ public class TaskList {
     }
 
     public void setup(){
-        tasks.add(new Task("Headline", "Description"));
+        tasks.add(new Task("Example Task", "This is an example task, you can toggle completion in the options menu."));
     }
 
 }

@@ -46,7 +46,11 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
         for(int i = 0; i < taskArrayList.size(); i++){
             Task task = taskArrayList.get(i);
-            taskHeadlineList[i] = task.getHeadline();
+            if(task.getComplete()) {
+                taskHeadlineList[i] = task.getHeadline() + " - complete";
+            } else {
+                taskHeadlineList[i] = task.getHeadline();
+            }
         }
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, taskHeadlineList);

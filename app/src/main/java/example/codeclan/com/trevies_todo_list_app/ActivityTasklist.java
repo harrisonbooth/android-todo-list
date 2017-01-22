@@ -89,5 +89,12 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         return true;
     }
 
+    @Override
+    public void onRestart() {  //when restart the page
+        super.onRestart(); //call normal restart stuff from android
+        finish();
+        startActivity(getIntent()); //re-gets implicit intent, so acts like it was just launched
+    }
+
 
 }

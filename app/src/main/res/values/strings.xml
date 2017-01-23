@@ -5,4 +5,8 @@
     <string name="action_toggle_complete">Toggle complete</string>
     <string name="action_delete_task">Delete task</string>
     <string name="action_archives">View completed tasks</string>
+    <string name="task_list_activity_label">Active Task List</string>
+    <string name="task_details_activity_label">Task Details</string>
+    <string name="new_task_activity_label">New Task</string>
+    <string name="task_archive_activity_label">Archive</string>
 </resources>

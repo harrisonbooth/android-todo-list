@@ -3,4 +3,5 @@
     <string name="main_screen_name">Trevies To-Do</string>
     <string name="action_new_task_title">New Task</string>
     <string name="action_toggle_complete">Toggle complete</string>
+    <string name="action_delete_task">Delete task</string>
 </resources>

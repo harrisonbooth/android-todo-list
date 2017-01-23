@@ -1,9 +1,12 @@
 package example.codeclan.com.trevies_todo_list_app;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -58,15 +61,15 @@ public class ActivityTaskDetail extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        final TaskList taskList;
+        taskList = SavedTaskListPreferences.getStoredTaskList(this);
+        final ArrayList<Task> taskArrayList = taskList.getTasks();
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        final int taskIndex = extras.getInt("taskIndex");
+
         if(item.getItemId() == R.id.action_toggle_complete) {
-            TaskList taskList;
-            taskList = SavedTaskListPreferences.getStoredTaskList(this);
-            ArrayList<Task> taskArrayList = taskList.getTasks();
-
-            Intent intent = getIntent();
-            Bundle extras = intent.getExtras();
-            int taskIndex = extras.getInt("taskIndex");
-
             Task task = taskArrayList.get(taskIndex);
             task.toggleComplete();
             boolean complete = task.getComplete();
@@ -78,7 +81,26 @@ public class ActivityTaskDetail extends AppCompatActivity {
             }
 
             SavedTaskListPreferences.setStoredTaskList(this, taskList);
+        } else if(item.getItemId() == R.id.action_delete_task) {
+            final Intent parentIntent = new Intent();
+            parentIntent.setClass(this, ActivityTasklist.class);
+            final Context currentContext = this;
+
+            new AlertDialog.Builder(this)
+                    .setTitle("Delete task")
+                    .setMessage("Do you really want to send this task back to whence it came?")
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            Task task = taskArrayList.get(taskIndex);
+                            taskList.removeTask(task);
+                            SavedTaskListPreferences.setStoredTaskList(currentContext, taskList);
+                            startActivity(parentIntent);
+                        }})
+                    .setNegativeButton(android.R.string.no, null).show();
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
+

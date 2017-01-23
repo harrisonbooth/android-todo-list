@@ -74,11 +74,8 @@ public class ActivityTaskDetail extends AppCompatActivity {
             task.toggleComplete();
             boolean complete = task.getComplete();
 
-            if(complete){
-                completeTextView.setText("Complete");
-            } else {
-                completeTextView.setText("Incomplete");
-            }
+            String completeText = complete ? "Complete" : "Incomplete";
+            completeTextView.setText(completeText);
 
             SavedTaskListPreferences.setStoredTaskList(this, taskList);
         } else if(item.getItemId() == R.id.action_delete_task) {

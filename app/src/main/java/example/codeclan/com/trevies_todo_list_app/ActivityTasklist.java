@@ -102,8 +102,9 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent();
+
         if(item.getItemId() == R.id.action_new_task) {
-            Intent intent = new Intent();
             intent.setClass(this, ActivityNewTask.class);
 
             startActivity(intent);

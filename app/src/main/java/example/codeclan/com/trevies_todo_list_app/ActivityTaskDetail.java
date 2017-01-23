@@ -62,16 +62,34 @@ public class ActivityTaskDetail extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        final TaskList taskList;
-        taskList = SavedTaskListPreferences.getStoredTaskList(this);
-        final ArrayList<Task> taskArrayList = taskList.getTasks();
-
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
+        String source = extras.getString("source");
         final int taskIndex = extras.getInt("taskIndex");
+        final TaskList taskList;
+        taskList = SavedTaskListPreferences.getStoredTaskList(this);
+        ArrayList<Task> fullTaskArrayList = taskList.getTasks();
+
+        final ArrayList<Task> taskArrayList = new ArrayList<>();
+        if(source == "archive") {
+            for (Task task : fullTaskArrayList) {
+                if (task.getComplete()) {
+                    taskArrayList.add(task);
+                }
+            }
+        } else {
+            for(Task task : fullTaskArrayList){
+                if(!task.getComplete()){
+                    taskArrayList.add(task);
+                }
+            }
+        }
 
         if(item.getItemId() == R.id.action_toggle_complete) {
             Task task = taskArrayList.get(taskIndex);
+            Log.d(getClass().toString(), task.getHeadline());
+
             task.toggleComplete();
             boolean complete = task.getComplete();
 

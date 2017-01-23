@@ -44,6 +44,12 @@ public class TaskList {
 
     public void setup(){
         tasks.add(new Task("Example Task", "This is an example task, you can toggle completion in the options menu."));
+        tasks.add(new Task("Housework", "Clean house before kids get home."));
+        tasks.add(new Task("Shopping", "Do weekly shop and get new school uniform for Shaun"));
+        tasks.add(new Task("Cooking", "Cook dinner for kids and make packed lunches for tomorrow"));
+        tasks.add(new Task("Reply to emails", "Check all work emaisl and reply to all if appropriate"));
+        tasks.add(new Task("Pick up kids", "Get Shaun from school and Macy from nursery"));
+        tasks.add(new Task("Get MOT", "Current MOT due to be renewed on Tuesday"));
     }
 
 }

@@ -30,16 +30,16 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
 
         ArrayList<Task> taskArrayList = taskList.getTasks();
-        String[] taskHeadlineList = new String[taskArrayList.size()];
+        ArrayList<String> taskHeadlineList = new ArrayList<String>();
 
-        for(int i = 0; i < taskArrayList.size(); i++){
+        for(int i = 0; i < (taskArrayList.size()); i++){
             Task task = taskArrayList.get(i);
             if(task.getComplete()) {
-                taskHeadlineList[i] = task.getHeadline();
+                taskHeadlineList.add(task.getHeadline());
             }
         }
 
-        if(taskHeadlineList[0] != null) {
+        if(taskHeadlineList.get(0) != null) {
             ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
         }
@@ -54,7 +54,14 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
 
 
         ArrayList<Task> taskArrayList = taskList.getTasks();
-        Task task = taskArrayList.get(position);
+        ArrayList<Task> completedTaskArrayList = new ArrayList<>();
+        for(Task task : taskArrayList){
+            if(task.getComplete()){
+                completedTaskArrayList.add(task);
+            }
+        }
+
+        Task task = completedTaskArrayList.get(position);
 
         String headline = task.getHeadline();
         String description = task.getDescription();
@@ -66,6 +73,7 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         Intent intent = new Intent();
         intent.setClass(this, ActivityTaskDetail.class);
 
+        intent.putExtra("source", "archive");
         intent.putExtra("taskIndex", position);
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);

@@ -34,24 +34,27 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
         if(SavedTaskListPreferences.getStoredTaskList(this) != null) {
             taskList = SavedTaskListPreferences.getStoredTaskList(this);
+//            Log.d(getClass().toString(), taskList.getTasks().toString());
         } else {
             taskList = new TaskList();
             taskList.setup();
             SavedTaskListPreferences.setStoredTaskList(this, taskList);
         }
 
-
         ArrayList<Task> taskArrayList = taskList.getTasks();
-        String[] taskHeadlineList = new String[taskArrayList.size()];
+        ArrayList<String> taskHeadlineList = new ArrayList<>();
 
-        for(int i = 0; i < taskArrayList.size(); i++){
+        for(int i = 0; i < (taskArrayList.size()); i++){
             Task task = taskArrayList.get(i);
-            if(!task.getComplete()) {
-                taskHeadlineList[i] = task.getHeadline();
+//            Log.d(getClass().toString(), String.valueOf(task.getComplete()));
+            if(!task.getComplete() && task.getHeadline() != null) {
+                taskHeadlineList.add(task.getHeadline());
+//                Log.d(getClass().toString(), task.getHeadline());
+//                Log.d(getClass().toString(), taskHeadlineList[i]);
             }
         }
 
-        if(taskHeadlineList[0] != null) {
+        if(taskHeadlineList.get(0) != null) {
             ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
         }
@@ -66,7 +69,14 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
 
         ArrayList<Task> taskArrayList = taskList.getTasks();
-        Task task = taskArrayList.get(position);
+        ArrayList<Task> nonCompletedTaskArrayList = new ArrayList<>();
+        for(Task task : taskArrayList){
+            if(!task.getComplete()){
+                nonCompletedTaskArrayList.add(task);
+            }
+        }
+
+        Task task = nonCompletedTaskArrayList.get(position);
 
         String headline = task.getHeadline();
         String description = task.getDescription();
@@ -77,7 +87,9 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         Intent intent = new Intent();
         intent.setClass(this, ActivityTaskDetail.class);
 
+        intent.putExtra("source", "tasklist");
         intent.putExtra("taskIndex", position);
+//        Log.d(getClass().toString(), String.valueOf(position));
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);
         intent.putExtra("complete", complete);

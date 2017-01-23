@@ -88,7 +88,7 @@ public class ActivityTaskDetail extends AppCompatActivity {
 
             new AlertDialog.Builder(this)
                     .setTitle("Delete task")
-                    .setMessage("Do you really want to send this task back to whence it came?")
+                    .setMessage("Do you really want to send this task back to from whence it came?")
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {

@@ -71,23 +71,26 @@ public class ActivityTaskDetail extends AppCompatActivity {
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
         ArrayList<Task> fullTaskArrayList = taskList.getTasks();
 
-        final ArrayList<Task> taskArrayList = new ArrayList<>();
-        if(source == "archive") {
-            for (Task task : fullTaskArrayList) {
+        ArrayList<Task> taskArrayList = new ArrayList<>();
+        if(source.equals("archive")) {
+            for (int i = 0; i < (fullTaskArrayList.size() - 1); i++) {
+                Task task = fullTaskArrayList.get(i);
                 if (task.getComplete()) {
                     taskArrayList.add(task);
                 }
             }
-        } else {
-            for(Task task : fullTaskArrayList){
-                if(!task.getComplete()){
+        } else if(source.equals("tasklist")) {
+            for (int i = 0; i < (fullTaskArrayList.size() - 1); i++) {
+                Task task = fullTaskArrayList.get(i);
+                if (!task.getComplete()) {
                     taskArrayList.add(task);
                 }
             }
         }
+        final ArrayList<Task> finalTaskArrayList = taskArrayList;
 
         if(item.getItemId() == R.id.action_toggle_complete) {
-            Task task = taskArrayList.get(taskIndex);
+            Task task = finalTaskArrayList.get(taskIndex);
             Log.d(getClass().toString(), task.getHeadline());
 
             task.toggleComplete();
@@ -108,7 +111,7 @@ public class ActivityTaskDetail extends AppCompatActivity {
                     .setIcon(android.R.drawable.ic_dialog_alert)
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                            Task task = taskArrayList.get(taskIndex);
+                            Task task = finalTaskArrayList.get(taskIndex);
                             taskList.removeTask(task);
                             SavedTaskListPreferences.setStoredTaskList(currentContext, taskList);
                             startActivity(parentIntent);

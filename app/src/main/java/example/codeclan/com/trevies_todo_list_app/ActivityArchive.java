@@ -52,7 +52,6 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         TaskList taskList;
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
 
-
         ArrayList<Task> taskArrayList = taskList.getTasks();
         ArrayList<Task> completedTaskArrayList = new ArrayList<>();
         for(Task task : taskArrayList){
@@ -69,7 +68,6 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
 
         Log.d(getClass().toString(), headline + description + complete);
 
-        // Then you start a new Activity via Intent
         Intent intent = new Intent();
         intent.setClass(this, ActivityTaskDetail.class);
 

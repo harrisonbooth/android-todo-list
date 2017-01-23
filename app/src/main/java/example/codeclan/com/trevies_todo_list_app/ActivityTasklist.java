@@ -54,10 +54,8 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
             }
         }
 
-        if(taskHeadlineList.get(0) != null) {
             ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
-        }
 
         taskListView.setOnItemClickListener(this);
 
@@ -66,7 +64,6 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
         TaskList taskList;
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
-
 
         ArrayList<Task> taskArrayList = taskList.getTasks();
         ArrayList<Task> nonCompletedTaskArrayList = new ArrayList<>();
@@ -89,7 +86,6 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
         intent.putExtra("source", "tasklist");
         intent.putExtra("taskIndex", position);
-//        Log.d(getClass().toString(), String.valueOf(position));
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);
         intent.putExtra("complete", complete);

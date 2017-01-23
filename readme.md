@@ -14,4 +14,3 @@ Users should also be able to mark tasks as completed.
 * Use the calendar to set due dates on tasks. 
 
 ---
- 

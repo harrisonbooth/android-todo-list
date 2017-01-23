@@ -50,6 +50,7 @@ public class ActivityTaskDetail extends AppCompatActivity {
         } else {
             completeTextView.setText("Incomplete");
         }
+
     }
 
     @Override
@@ -95,9 +96,18 @@ public class ActivityTaskDetail extends AppCompatActivity {
                             startActivity(parentIntent);
                         }})
                     .setNegativeButton(android.R.string.no, null).show();
+        } else if(item.getItemId() == android.R.id.home){
+            finish();
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
+
 
 }
 

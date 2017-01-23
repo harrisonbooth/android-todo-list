@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,7 +22,6 @@ import java.util.ArrayList;
 public class ActivityTasklist extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private ListView taskListView;
-    private ArrayList<String> taskHeadlines;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +98,17 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         super.onRestart(); //call normal restart stuff from android
         finish();
         startActivity(getIntent()); //re-gets implicit intent, so acts like it was just launched
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_new_task) {
+            Intent intent = new Intent();
+            intent.setClass(this, ActivityNewTask.class);
+
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 

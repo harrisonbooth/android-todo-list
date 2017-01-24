@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,9 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         // Sets layout for activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklist);
+
+        // Welcomes user to the archives
+        Toast.makeText(this, "Welcome mortal, to the archives...", Toast.LENGTH_LONG).show();
 
         // Sets taskListView variable to the ListView in the layout
         taskListView = (ListView) findViewById(R.id.activity_tasklist);

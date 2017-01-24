@@ -61,7 +61,11 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         for(int i = 0; i < (taskArrayList.size()); i++){
             Task task = taskArrayList.get(i);
             if(!task.getComplete() && task.getHeadline() != null) {
-                taskHeadlineList.add(task.getHeadline());
+                if(task.getPriority()){
+                    taskHeadlineList.add("~" + task.getHeadline());
+                } else {
+                    taskHeadlineList.add(task.getHeadline());
+                }
             }
         }
 
@@ -98,6 +102,7 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         String headline = task.getHeadline();
         String description = task.getDescription();
         boolean complete = task.getComplete();
+        boolean priority = task.getPriority();
 
         // Creates intent to send user to task details activity
         Intent intent = new Intent();
@@ -109,6 +114,7 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);
         intent.putExtra("complete", complete);
+        intent.putExtra("priority", priority);
 
         // Sends user to task details activity with intent and extras
         startActivity(intent);

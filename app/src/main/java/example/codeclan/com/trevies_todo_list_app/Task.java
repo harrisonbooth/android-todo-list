@@ -9,11 +9,13 @@ public class Task {
     private String headline;
     private String description;
     private boolean complete;
+    private boolean priority;
 
-    public Task(String headline, String description){
+    public Task(String headline, String description, Boolean priority){
         this.headline = headline;
         this.description = description;
         complete = false;
+        this.priority = priority;
     }
 
 
@@ -27,6 +29,10 @@ public class Task {
 
     public boolean getComplete() {
         return complete;
+    }
+
+    public boolean getPriority(){
+        return priority;
     }
 
     public void toggleComplete() {

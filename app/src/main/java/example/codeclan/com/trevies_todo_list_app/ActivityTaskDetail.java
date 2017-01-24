@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 public class ActivityTaskDetail extends AppCompatActivity {
 
     private TextView headlineTextView;
+    private TextView priorityTextView;
     private TextView descriptionTextView;
     private TextView completeTextView;
 
@@ -51,15 +53,24 @@ public class ActivityTaskDetail extends AppCompatActivity {
         String headline = extras.getString("headline");
         String description = extras.getString("description");
         boolean complete = extras.getBoolean("complete");
+        boolean priority = extras.getBoolean("priority");
 
         // Sets view variables to the views in the layout
         headlineTextView = (TextView) findViewById(R.id.headline_text_view);
+        priorityTextView = (TextView) findViewById(R.id.priority_text_view);
         descriptionTextView = (TextView) findViewById(R.id.description_text_view);
         completeTextView = (TextView) findViewById(R.id.complete_text_view);
 
         // Sets text in TextViews to task information from extras
         headlineTextView.setText(headline);
         descriptionTextView.setText(description);
+
+        // Decides if task is priority or not, and displays this in TextView
+        if(priority){
+            priorityTextView.setText("Priority");
+        } else {
+            priorityTextView.setHeight(0);
+        }
 
         // Decides if task is active or complete, and displays this in TextView
         if(complete){

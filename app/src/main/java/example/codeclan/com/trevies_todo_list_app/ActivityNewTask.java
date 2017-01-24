@@ -6,6 +6,7 @@ import android.os.PersistableBundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 /**
@@ -15,6 +16,7 @@ public class ActivityNewTask extends AppCompatActivity {
 
     EditText headlineEditText;
     EditText descriptionEditText;
+    CheckBox priorityCheckBox;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class ActivityNewTask extends AppCompatActivity {
         // Sets view variables to the views in the layout
         headlineEditText = (EditText) findViewById(R.id.headline_edit_text);
         descriptionEditText = (EditText) findViewById(R.id.description_edit_text);
+        priorityCheckBox = (CheckBox) findViewById(R.id.checkbox_priority);
 
     }
 
@@ -48,9 +51,10 @@ public class ActivityNewTask extends AppCompatActivity {
         // Sets newTaskHeadline and newTaskDescription to what the user has types in the EditTexts
         String newTaskHeadline = headlineEditText.getText().toString();
         String newTaskDescription = descriptionEditText.getText().toString();
+        boolean newTaskPriority = priorityCheckBox.isChecked();
 
         // Creates new task with the information in the newTask string variables
-        Task newTask = new Task(newTaskHeadline, newTaskDescription);
+        Task newTask = new Task(newTaskHeadline, newTaskDescription, newTaskPriority);
 
         // Sets taskList variable to saved taskList
         TaskList taskList;

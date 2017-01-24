@@ -14,7 +14,7 @@ public class TaskTest {
 
     @Before
     public void before(){
-        task = new Task("Weekly shop", "Get weekly shop from Asda.");
+        task = new Task("Weekly shop", "Get weekly shop from Asda.", false);
     }
 
     @Test

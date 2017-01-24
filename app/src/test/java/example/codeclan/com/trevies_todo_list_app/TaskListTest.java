@@ -18,7 +18,7 @@ public class TaskListTest {
     @Before
     public void before(){
         taskList = new TaskList();
-        task1 = new Task("Headline 1", "Description 1");
+        task1 = new Task("Headline 1", "Description 1", true);
     }
 
     @Test

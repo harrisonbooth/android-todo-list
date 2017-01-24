@@ -20,6 +20,8 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // Gets saved theme settings and applies them, if there are none, default is applied
         String themeName = SavedThemePreferences.getStoredTheme(this);
         if(themeName == null || themeName.equals("Default")){
             setTheme(R.style.AppTheme);
@@ -29,18 +31,22 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
             setTheme(R.style.AppTheme_Lab);
         }
 
+        // Sets layout for activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklist);
 
+        // Sets taskListView variable to the ListView in the layout
         taskListView = (ListView) findViewById(R.id.activity_tasklist);
 
+        // Sets taskList variable to saved tasklist
         TaskList taskList;
-
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
 
+        // Creates taskArrayList from the tasks in the taskList
         ArrayList<Task> taskArrayList = taskList.getTasks();
-        ArrayList<String> taskHeadlineList = new ArrayList<String>();
+        ArrayList<String> taskHeadlineList = new ArrayList<>();
 
+        // Creates taskHeadlineList from the headlines of completed tasks
         for(int i = 0; i < (taskArrayList.size()); i++){
             Task task = taskArrayList.get(i);
             if(task.getComplete()) {
@@ -48,52 +54,64 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
             }
         }
 
+        // Adapts headlines into ListView if there are any
         if(taskHeadlineList.get(0) != null) {
             ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
         }
 
+        // Sets up listener for items in ListView
         taskListView.setOnItemClickListener(this);
 
     }
 
     public void onItemClick(AdapterView<?> l, View v, int position, long id) {
+
+        // Sets taskList variable to saved taskList
         TaskList taskList;
         taskList = SavedTaskListPreferences.getStoredTaskList(this);
 
+        // Creates taskArrayList from the tasks in the taskList
         ArrayList<Task> taskArrayList = taskList.getTasks();
         ArrayList<Task> completedTaskArrayList = new ArrayList<>();
+
+        // Creates completeTaskArrayList of completed tasks from taskList
         for(Task task : taskArrayList){
             if(task.getComplete()){
                 completedTaskArrayList.add(task);
             }
         }
 
+        // Selects task with position in ListView that was clicked
         Task task = completedTaskArrayList.get(position);
 
+        // Gets headline, description, and completion status from task
         String headline = task.getHeadline();
         String description = task.getDescription();
         boolean complete = task.getComplete();
 
-        Log.d(getClass().toString(), headline + description + complete);
-
+        // Creates intent to send user to task details activity
         Intent intent = new Intent();
         intent.setClass(this, ActivityTaskDetail.class);
 
+        // Bundles the source, taskIndex, headline, descpription, and completion in intent
         intent.putExtra("source", "archive");
         intent.putExtra("taskIndex", position);
         intent.putExtra("headline", headline);
         intent.putExtra("description", description);
         intent.putExtra("complete", complete);
 
+        // Sends user to task details activity with intent and extras
         startActivity(intent);
     }
 
     @Override
-    public void onRestart() {  //when restart the page
-        super.onRestart(); //call normal restart stuff from android
+    public void onRestart() {
+        // Ensures that when activity restarts or is moved back to, onCreate will run like it is
+        // being opened for the first time
+        super.onRestart();
         finish();
-        startActivity(getIntent()); //re-gets implicit intent, so acts like it was just launched
+        startActivity(getIntent());
     }
 
 }

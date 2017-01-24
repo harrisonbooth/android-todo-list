@@ -36,9 +36,6 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklist);
 
-        // Welcomes user to the archives
-        Toast.makeText(this, "Welcome mortal, to the archives...", Toast.LENGTH_LONG).show();
-
         // Sets taskListView variable to the ListView in the layout
         taskListView = (ListView) findViewById(R.id.activity_tasklist);
 
@@ -59,10 +56,8 @@ public class ActivityArchive extends AppCompatActivity implements AdapterView.On
         }
 
         // Adapts headlines into ListView if there are any
-        if(taskHeadlineList.get(0) != null) {
             ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
-        }
 
         // Sets up listener for items in ListView
         taskListView.setOnItemClickListener(this);

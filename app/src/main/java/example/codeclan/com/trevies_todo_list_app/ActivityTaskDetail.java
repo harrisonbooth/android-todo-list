@@ -98,7 +98,7 @@ public class ActivityTaskDetail extends AppCompatActivity {
         // This is used to ensure that the taskIndex selects the correct task
         ArrayList<Task> taskArrayList = new ArrayList<>();
         if(source.equals("archive")) {
-            for (int i = 0; i < (fullTaskArrayList.size() - 1); i++) {
+            for (int i = 0; i < (fullTaskArrayList.size()); i++) {
                 Task task = fullTaskArrayList.get(i);
                 if (task.getComplete()) {
                     taskArrayList.add(task);

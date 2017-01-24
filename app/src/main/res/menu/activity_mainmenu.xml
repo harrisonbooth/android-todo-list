@@ -4,4 +4,6 @@
         android:title="@string/action_new_task_title"/>
     <item android:id="@+id/action_archives"
         android:title="@string/action_archives"/>
+    <item android:id="@+id/action_theme_menu"
+        android:title="@string/action_theme_menu"/>
 </menu>

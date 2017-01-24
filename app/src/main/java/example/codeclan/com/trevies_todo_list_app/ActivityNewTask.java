@@ -18,6 +18,15 @@ public class ActivityNewTask extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        String themeName = SavedThemePreferences.getStoredTheme(this);
+        if(themeName == null || themeName.equals("Default")){
+            setTheme(R.style.AppTheme);
+        } else if(themeName.equals("Blackboard")){
+            setTheme(R.style.AppTheme_BlackBoard);
+        } else if(themeName.equals("Lab")){
+            setTheme(R.style.AppTheme_Lab);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
 

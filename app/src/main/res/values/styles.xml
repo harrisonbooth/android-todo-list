@@ -8,4 +8,38 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Blackboard theme -->
+    <style name="AppTheme.BlackBoard" parent="Theme.AppCompat">
+        <item name="android:windowBackground">@color/colorBackgroundBlackboard</item>
+        <item name="colorPrimary">@color/colorPrimaryBlackboard</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkBlackboard</item>
+        <item name="colorAccent">@color/colorAccentBlackboard</item>
+        <item name="android:textColor">@color/colorTextBlackboard</item>
+        <item name="android:typeface">serif</item>
+    </style>
+
+    <style name="AppTheme.BlackBoard.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.BlackBoard.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
+
+     <!--Lab theme -->
+    <style name="AppTheme.Lab" parent="Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/colorBackgroundLab</item>
+        <item name="colorPrimary">@color/colorPrimaryLab</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLab</item>
+        <item name="colorAccent">@color/colorAccentLab</item>
+        <item name="android:textColor">@color/colorTextLab</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="AppTheme.Lab.NoActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Lab.PopupOverlay" parent="ThemeOverlay.AppCompat"/>
+
 </resources>

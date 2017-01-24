@@ -25,6 +25,15 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String themeName = SavedThemePreferences.getStoredTheme(this);
+        if(themeName == null || themeName.equals("Default")){
+            setTheme(R.style.AppTheme);
+        } else if(themeName.equals("Blackboard")){
+            setTheme(R.style.AppTheme_BlackBoard);
+        } else if(themeName.equals("Lab")){
+            setTheme(R.style.AppTheme_Lab);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasklist);
 
@@ -54,7 +63,7 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
             }
         }
 
-            ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.custom_list_items, taskHeadlineList);
+            ArrayAdapter adapter = new ArrayAdapter<>(this, R.layout.custom_list_items, taskHeadlineList);
             taskListView.setAdapter(adapter);
 
         taskListView.setOnItemClickListener(this);
@@ -116,6 +125,9 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
             startActivity(intent);
         } else if(item.getItemId() == R.id.action_archives) {
             intent.setClass(this, ActivityArchive.class);
+            startActivity(intent);
+        } else if(item.getItemId() == R.id.action_theme_menu) {
+            intent.setClass(this, ActivityThemeMenu.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);

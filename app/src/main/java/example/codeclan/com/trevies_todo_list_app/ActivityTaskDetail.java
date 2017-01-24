@@ -28,6 +28,15 @@ public class ActivityTaskDetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String themeName = SavedThemePreferences.getStoredTheme(this);
+        if(themeName == null || themeName.equals("Default")){
+            setTheme(R.style.AppTheme);
+        } else if(themeName.equals("Blackboard")){
+            setTheme(R.style.AppTheme_BlackBoard);
+        } else if(themeName.equals("Lab")){
+            setTheme(R.style.AppTheme_Lab);
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_details);
 
@@ -80,7 +89,7 @@ public class ActivityTaskDetail extends AppCompatActivity {
                 }
             }
         } else if(source.equals("tasklist")) {
-            for (int i = 0; i < (fullTaskArrayList.size() - 1); i++) {
+            for (int i = 0; i < (fullTaskArrayList.size()); i++) {
                 Task task = fullTaskArrayList.get(i);
                 if (!task.getComplete()) {
                     taskArrayList.add(task);

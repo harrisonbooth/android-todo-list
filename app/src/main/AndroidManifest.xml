@@ -35,6 +35,10 @@
             android:label="@string/task_archive_activity_label"
             android:parentActivityName=".ActivityTasklist"/>
 
+        <activity android:name=".ActivityThemeMenu"
+            android:label="@string/theme_menu_activity_label"
+            android:parentActivityName=".ActivityTasklist"/>
+
     </application>
 
 </manifest>

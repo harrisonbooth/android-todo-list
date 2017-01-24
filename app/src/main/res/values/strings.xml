@@ -9,4 +9,6 @@
     <string name="task_details_activity_label">Task Details</string>
     <string name="new_task_activity_label">New Task</string>
     <string name="task_archive_activity_label">Archive</string>
+    <string name="action_theme_menu">Themes</string>
+    <string name="theme_menu_activity_label">Themes</string>
 </resources>

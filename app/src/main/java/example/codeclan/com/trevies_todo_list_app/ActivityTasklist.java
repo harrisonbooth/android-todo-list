@@ -57,7 +57,8 @@ public class ActivityTasklist extends AppCompatActivity implements AdapterView.O
         ArrayList<Task> taskArrayList = taskList.getTasks();
         ArrayList<String> taskHeadlineList = new ArrayList<>();
 
-        // Creates taskHeadlineList from the headlines of completed tasks
+        // Creates taskHeadlineList from the headlines of completed tasks, adding labels to priority
+        // tasks
         for(int i = 0; i < (taskArrayList.size()); i++){
             Task task = taskArrayList.get(i);
             if(!task.getComplete() && task.getHeadline() != null) {

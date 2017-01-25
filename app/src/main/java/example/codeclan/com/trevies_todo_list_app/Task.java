@@ -11,6 +11,8 @@ public class Task {
     private boolean complete;
     private boolean priority;
 
+    // Takes in headline, description, and if task is priority then creates
+    // Task is false by default
     public Task(String headline, String description, Boolean priority){
         this.headline = headline;
         this.description = description;
@@ -18,23 +20,27 @@ public class Task {
         this.priority = priority;
     }
 
-
+    // Returns headline
     public String getHeadline() {
         return headline;
     }
 
+    // Returns description
     public String getDescription() {
         return description;
     }
 
+    // Returns completion status
     public boolean getComplete() {
         return complete;
     }
 
+    // Returns priority
     public boolean getPriority(){
         return priority;
     }
 
+    // Switches completion state
     public void toggleComplete() {
         complete = !complete;
     }

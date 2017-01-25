@@ -12,22 +12,28 @@ public class TaskList {
 
     private ArrayList<Task> tasks;
 
+    // Creates tasklist with empty arraylist of tasks
     public TaskList(){
         tasks = new ArrayList<Task>();
     }
 
+    // Returns the number of tasks in the tasklist
     public int taskCount(){
         return tasks.size();
     }
 
+    // Takes in task and adds it to tasklist
     public void addTask(Task task) {
         tasks.add(task);
     }
 
+    // Takes in task and removes it from tasklist
     public void removeTask(Task task) {
         tasks.remove(task);
     }
 
+    // Takes in a headline and searches the arraylist for tasks with that headline,
+    // then removes them from tasklist
     public void removeTaskByHeadline(String headline) {
         ArrayList<Task> tasksToRemove = new ArrayList<Task>();
         for(Task task : tasks){
@@ -38,10 +44,12 @@ public class TaskList {
         tasks.removeAll(tasksToRemove);
     }
 
+    // Returns tasklist
     public ArrayList<Task> getTasks() {
         return tasks;
     }
 
+    // Sets up tasklist with sample data
     public void setup(){
         tasks.add(new Task("Example Task", "This is an example task, you can toggle completion in the options menu.", true));
         tasks.add(new Task("Housework", "Clean house before kids get home.", false));

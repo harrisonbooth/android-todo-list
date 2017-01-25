@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Default theme -->
     <color name="colorPrimary">#433F40</color>
     <color name="colorPrimaryDark">#231F20</color>
     <color name="colorAccent">#736F80</color>
     <color name="colorDivider">#666666</color>
     <color name="colorDetailText">#333333</color>
 
+    <!-- Blackboard theme -->
     <color name="colorBackgroundBlackboard">#222222</color>
     <color name="colorPrimaryBlackboard">#444444</color>
     <color name="colorPrimaryDarkBlackboard">#303030</color>
     <color name="colorTextBlackboard">#E0E0E0</color>
     <color name="colorAccentBlackboard">#666666</color>
 
+    <!-- Lab theme -->
     <color name="colorBackgroundLab">#EEEEEE</color>
     <color name="colorPrimaryLab">#DDDDDD</color>
     <color name="colorPrimaryDarkLab">#AAAAAA</color>

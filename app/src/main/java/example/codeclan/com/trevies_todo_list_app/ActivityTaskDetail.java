@@ -144,6 +144,17 @@ public class ActivityTaskDetail extends AppCompatActivity {
             // Saves task with toggled completion
             SavedTaskListPreferences.setStoredTaskList(this, taskList);
 
+            // Sets up intent to send the user back to the previous activity, avoiding crashing
+            Intent parentIntent = new Intent();
+
+            if(source.equals("archive")) {
+                parentIntent.setClass(this, ActivityArchive.class);
+            } else if(source.equals("tasklist")) {
+                parentIntent.setClass(this, ActivityTasklist.class);
+            }
+
+            startActivity(parentIntent);
+
         } else if(item.getItemId() == R.id.action_delete_task) {
 
             // If delete task is selected, creates intent to bring send user back to previous activity
